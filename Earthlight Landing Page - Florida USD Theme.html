@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Earthlight - Stop Losing $30K/Year to Value Engineering</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        
+
+        :root {
+            --navy: #1E293B;
+            --sun: #F59E0B;
+            --amber: #D97706;
+            --bg: #F7F3EE;
+            --tint: #FFF3E0;
+            --surface: #FFFFFF;
+            --text: #111827;
+            --muted: #6B7280;
+            --border: #E7E2DA;
+            --radius: 16px;
+            --shadow-sm: 0 4px 10px rgba(17, 24, 39, 0.06);
+            --shadow-md: 0 10px 24px rgba(17, 24, 39, 0.10);
+        }
+
+body {
+            font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+
+        h1, h2, h3, h4, .section-title, .hero h1 {
+            font-family: 'Fraunces', ui-serif, Georgia, 'Times New Roman', Times, serif;
+            letter-spacing: -0.01em;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--text) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .subheadline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero .cta-primary {
+            display: inline-block;
+            background: var(--sun);
+            color: var(--navy);
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: var(--radius);
+            margin-top: 20px;
+            border: 1px solid rgba(231, 226, 218, 0.35);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .hero .cta-primary:hover {
+            transform: translateY(-1px);
+            background: var(--amber);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--muted);
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Problem Section */
+        .problem-box {
+            background: var(--tint);
+            border-left: 6px solid var(--sun);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .problem-box h3 {
+            color: #1E293B;
+            font-size: 1.75rem;
+            margin-bottom: 15px;
+        }
+
+        .problem-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .problem-box li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .problem-box li:before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: var(--amber);
+            font-weight: bold;
+            font-size: 1.35rem;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: var(--surface);
+            border-left: 6px solid var(--sun);
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: var(--radius);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .quote-source {
+            font-style: normal;
+            font-weight: 600;
+            margin-top: 15px;
+            color: var(--navy);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--sun);
+            margin-bottom: 10px;
+            font-family: 'Fraunces', ui-serif, Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .stat-label {
+            font-size: 1.05rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        /* Breakdown Section */
+        .breakdown-item {
+            background: var(--surface);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            border-left: 6px solid var(--sun);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .breakdown-item h4 {
+            color: var(--navy);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .breakdown-item .calculation {
+            background: var(--bg);
+            padding: 15px;
+            border-radius: var(--radius);
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            font-size: 0.98rem;
+            margin: 10px 0;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .breakdown-item .result {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--sun);
+            margin-top: 10px;
+        }
+
+        /* Solution Section */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .solution-card {
+            background: var(--surface);
+            padding: 30px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--sun);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .solution-card h3 {
+            color: var(--navy);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .solution-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .solution-card li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+        }
+
+        .solution-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--sun);
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        /* ROI Calculator */
+        .calculator {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .calculator h3 {
+            color: var(--navy);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--bg);
+            color: var(--text);
+            outline: none;
+        }
+
+        .calculator-result {
+            background: var(--navy);
+            color: #FFFFFF;
+            padding: 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .calculator-result h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .calculator-result .big-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--text) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-section .cta-button {
+            display: inline-block;
+            background: var(--sun);
+            color: var(--navy);
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: var(--radius);
+            border: 1px solid rgba(231, 226, 218, 0.35);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .cta-section .cta-button:hover {
+            transform: translateY(-1px);
+            background: var(--amber);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: #FFFFFF;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .subheadline {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Your Spec Sales Team Is Losing $30,000/Year</h1>
+        <p class="subheadline">Not from lack of effort. From Value Engineering that strips circadian lighting before it reaches the jobsite.</p>
+        <a href="#calculator" class="cta-primary">Calculate Your Lost Revenue →</a>
+    </div>
+
+    <!-- Problem Section -->
+    <div class="container">
+        <section class="section">
+            <h2 class="section-title">The Hidden Cost of "Extras"</h2>
+            <p class="section-subtitle">Senior specification professionals lose income, influence, and time—not because their lighting solutions are wrong, but because value gets stripped during procurement.</p>
+
+            <div class="problem-box">
+                <h3>What Actually Happens During Value Engineering</h3>
+                <ul>
+                    <li>ROI and health data are rarely used during design discussions</li>
+                    <li>Information passes through "many sets of hands" and gets diluted</li>
+                    <li>Contractors reframe quality lighting as optional cost add-ons</li>
+                    <li>VE happens after intent is set but before decisions lock in</li>
+                    <li>Spec professionals are forced into repeated re-justification</li>
+                </ul>
+            </div>
+
+            <div class="quote-box">
+                "Even when budgets are approved, it is the contractor during the tender phase that labels circadian, tunable, even daylight harvesting as 'extras' that don't add any value."
+                <div class="quote-source">— Senior Specification Sales Professional, Florida</div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="section">
+            <h2 class="section-title">The Real Numbers</h2>
+            <p class="section-subtitle">Conservative analysis of a senior specification professional influencing 15 projects annually in the Florida market</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">$30K</div>
+                    <div class="stat-label">Annual Income Loss</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">90 hrs</div>
+                    <div class="stat-label">Unpaid VE Rework</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10%</div>
+                    <div class="stat-label">Average Scope Reduction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">19%</div>
+                    <div class="stat-label">Variable Income Lost</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Breakdown Section -->
+        <section class="section">
+            <h2 class="section-title">Where the Money Goes</h2>
+
+            <div class="breakdown-item">
+                <h4>Loss #1: Unpaid VE Rework Time</h4>
+                <p><strong>Scenario:</strong> 15 projects/year, 2 VE cycles each, 3 hours per cycle</p>
+                <div class="calculation">
+                    Annual compensation: $160,000 USD<br>
+                    Hourly value: $160,000 ÷ 1,920 hours = $83/hour<br>
+                    VE rework time: 15 projects × 2 cycles × 3 hours = 90 hours<br>
+                    Time lost: 90 hours × $83/hour
+                </div>
+                <div class="result">= $7,500 USD/year</div>
+            </div>
+
+            <div class="breakdown-item">
+                <h4>Loss #2: Commission from Downgraded Scope</h4>
+                <p><strong>Scenario:</strong> Average $300K lighting package, 10% VE reduction, 5% commission</p>
+                <div class="calculation">
+                    Average project scope: $300,000<br>
+                    VE scope reduction: 10% = $30,000<br>
+                    Commission rate: 5% (conservative)<br>
+                    Lost commission per project: $30,000 × 5% = $1,500<br>
+                    Annual loss: $1,500 × 15 projects
+                </div>
+                <div class="result">= $22,500 USD/year</div>
+            </div>
+
+            <div class="breakdown-item">
+                <h4>Total Annual Impact</h4>
+                <div class="calculation">
+                    Unpaid VE rework: $7,500<br>
+                    Lost commission: $22,500
+                </div>
+                <div class="result">= $30,000 USD/year (entirely preventable)</div>
+            </div>
+        </section>
+
+        <!-- Calculator Section -->
+        <section class="section" id="calculator">
+            <h2 class="section-title">Calculate Your Team's Lost Revenue</h2>
+            
+            <div class="calculator">
+                <h3>ROI Calculator</h3>
+                
+                <div class="input-group">
+                    <label for="compensation">Annual Compensation (USD)</label>
+                    <input type="number" id="compensation" value="160000" min="0" step="1000">
+                </div>
+
+                <div class="input-group">
+                    <label for="projects">Number of Projects Influenced Annually</label>
+                    <input type="number" id="projects" value="15" min="1" step="1">
+                </div>
+
+                <div class="input-group">
+                    <label for="avgProject">Average Lighting Package Value (USD)</label>
+                    <input type="number" id="avgProject" value="300000" min="0" step="10000">
+                </div>
+
+                <div class="input-group">
+                    <label for="veReduction">VE Scope Reduction (%)</label>
+                    <input type="number" id="veReduction" value="10" min="0" max="50" step="1">
+                </div>
+
+                <div class="input-group">
+                    <label for="commission">Commission Rate (%)</label>
+                    <input type="number" id="commission" value="5" min="0" max="20" step="0.5">
+                </div>
+
+                <div class="calculator-result">
+                    <h4>Your Estimated Annual Loss</h4>
+                    <div class="big-number" id="totalLoss">$30,000</div>
+                    <p>Time Loss: <span id="timeLoss">$7,500</span> | Commission Loss: <span id="commissionLoss">$22,500</span></p>
+                    <p style="margin-top: 20px; font-size: 1.1rem;">If Earthlight prevents just 50% of VE losses, that's <strong id="recovered">$15,000/year</strong> recovered</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="section">
+            <h2 class="section-title">What Changes With Earthlight</h2>
+            <p class="section-subtitle">Value defense that survives procurement</p>
+
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <h3>Before Tender</h3>
+                    <ul>
+                        <li>ROI documentation ready at design phase</li>
+                        <li>Health and productivity data pre-loaded</li>
+                        <li>Value quantified before VE meetings</li>
+                        <li>Circadian benefits in CFO language</li>
+                    </ul>
+                </div>
+
+                <div class="solution-card">
+                    <h3>During Procurement</h3>
+                    <ul>
+                        <li>Quality lighting positioned as investment, not cost</li>
+                        <li>Clear payback periods included</li>
+                        <li>Contractor objections pre-answered</li>
+                        <li>Stakeholder-specific value cases</li>
+                    </ul>
+                </div>
+
+                <div class="solution-card">
+                    <h3>After Implementation</h3>
+                    <ul>
+                        <li>Less rework, more selling time</li>
+                        <li>Protected commission scope</li>
+                        <li>Increased early-stage influence</li>
+                        <li>Stronger client relationships</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conservative Notes -->
+        <section class="section">
+            <h2 class="section-title">Why These Numbers Are Conservative</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label" style="font-size: 1rem; margin-bottom: 15px;">Salary used is mid-range, not top quartile</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label" style="font-size: 1rem; margin-bottom: 15px;">Commission rate is low-end (5%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label" style="font-size: 1rem; margin-bottom: 15px;">Scope reduction assumed at 10%, not 15%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label" style="font-size: 1rem; margin-bottom: 15px;">Only 15 projects modeled (many teams handle 20+)</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #6B7280;">This excludes: burnout, opportunity cost, damaged relationships, and lost leadership leverage</p>
+        </section>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <h2>Stop Losing Revenue to Value Engineering</h2>
+        <p>Earthlight turns quality lighting into defensible value—before procurement strips it away.</p>
+        <a href="mailto:contact@earthlight.com" class="cta-button">Schedule a Demo →</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Earthlight Technologies. Protecting value for specification professionals.</p>
+        <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">Case study anonymized. Analysis based on Florida GTA market data, IES professional surveys, and conservative industry benchmarks.</p>
+        
+        <div style="margin-top: 40px; padding: 30px; background: #111827; border-radius: 8px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: #FFFFFF;">Full Report Content</h3>
+            
+            <div style="background: #FFFFFF; color: #111827; padding: 30px; border-radius: 6px; text-align: left; font-size: 0.95rem; line-height: 1.8; max-height: 600px; overflow-y: auto;">
+                <h2 style="color: #1E293B; border-bottom: 2px solid #F59E0B; padding-bottom: 10px; margin-bottom: 20px;">The Cost of Not Doing Circadian Lighting in Florida</h2>
+                <h3 style="color: #6B7280; margin-bottom: 30px;">Quantifying Lost Value for Specification Professionals and Their Customers in the GTA</h3>
+                
+                <h3 style="color: #1E293B; margin-top: 30px; margin-bottom: 15px;">1. Executive Summary</h3>
+                <p>Senior specification professionals in the Greater Florida Area are experiencing significant erosion of income, influence, and project quality—not from lack of expertise, but from systematic value engineering that strips circadian-supportive lighting during procurement. This report quantifies the financial impact on both specification professionals and building owners who fail to adopt evidence-based lighting strategies.</p>
+                
+                <p><strong>Key Findings:</strong></p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Average annual income loss per senior spec professional: ~$30,000 USD</li>
+                    <li>90 hours/year lost to unpaid VE rework and re-justification</li>
+                    <li>10% average scope reduction on circadian-capable systems</li>
+                    <li>Productivity improvements of 10-18% documented in circadian lighting studies</li>
+                    <li>Simple payback period: 2-4 years for office environments</li>
+                </ul>
+
+                <h3 style="color: #1E293B; margin-top: 30px; margin-bottom: 15px;">2. Market Context: The GTA Lighting Ecosystem</h3>
+                <p>Florida's built environment spans multiple high-value segments where lighting quality directly impacts human performance and business outcomes:</p>
+                
+                <p><strong>Key Market Segments:</strong></p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Class A offices (financial district, tech corridors)</li>
+                    <li>Healthcare facilities and long-term care</li>
+                    <li>Educational institutions (schools, universities)</li>
+                    <li>High-end retail and luxury hospitality</li>
+                    <li>Multi-residential developments</li>
+                    <li>Community and civic spaces</li>
+                </ul>
+
+                <h3 style="color: #1E293B; margin-top: 30px; margin-bottom: 15px;">3. Observed Barriers in the Florida Market</h3>
+                
+                <div style="background: #FFF3E0; padding: 20px; border-left: 4px solid #F59E0B; margin: 20px 0;">
+                    <p><strong>Common Patterns Identified:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Limited understanding of WELL Building Standard concepts</li>
+                        <li>Difficulty evaluating luminaire and control options beyond first cost</li>
+                        <li>Information dilution as project moves from design to procurement</li>
+                        <li>Contractors labeling circadian and tunable systems as "extras"</li>
+                        <li>Skepticism toward health data despite peer-reviewed research</li>
+                        <li>ROI and rebates treated as afterthoughts, not decision drivers</li>
+                    </ul>
+                </div>
+
+                <h3 style="color: #1E293B; margin-top: 30px; margin-bottom: 15px;">4. Framework for Quantifying Lost Value</h3>
+                
+                <p><strong>Value Pillars Analyzed:</strong></p>
+                <ol style="margin-left: 20px; margin-bottom: 20px;">
+                    <li><strong>Productivity & Performance:</strong> Measured as % improvement in task efficiency and self-reported performance</li>
+                    <li><strong>Health & Absenteeism:</strong> Reduced sick days, improved sleep quality, lower stress</li>
+                    <li><strong>Retention & Satisfaction:</strong> Lower staff turnover, higher tenant satisfaction</li>
+                    <li><strong>Asset Value:</strong> Rental premiums, faster lease-up, higher building valuations</li>
+                    <li><strong>Energy & Maintenance:</strong> Additional savings from advanced controls and tuning</li>
+                </ol>
+
+                <h3 style="color: #1E293B; margin-top: 30px; margin-bottom: 15px;">5. Case Study: Class A Office Buildings (GTA)</h3>
+                
+                <div style="background: #FFF3E0; padding: 20px; border-left: 4px solid #F59E0B; margin: 20px 0;">
+                    <h4 style="color: #1E293B; margin-bottom: 10px;">Prototype Project Assumptions</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Building size: 20,000 sq ft office floor</li>
+                        <li>Occupant count: ~130 knowledge workers (150 sq ft/person)</li>
+                        <li>Average salary: $75,000 USD/year</li>
+                        <li>Baseline lighting: Static LED, basic occupancy controls</li>
+                        <li>Enhanced scenario: Circadian-tunable with daylight harvesting</li>
+                    </ul>
+                </div>
+
+                <p><strong>Productivity Impact Model:</strong></p>
+                <div style="background: #F7F3EE; padding: 15px; border-radius: 4px; font-family: 'Courier New', monospace; margin: 15px 0;">
+                    Conservative productivity uplift: 10%<br>
+                    130 occupants × $75,000 × 10% = $975,000/year<br>
+                    Incremental lighting system cost: ~$150,000<br>
+                    Simple payback: 2.2 months
+                </div>
+
+                <p><strong>Annual Value Not Captured (if circadian not adopted):</strong> ~$975,000 per office floor</p>
+
+                <h3 style="color: #1E293B; margin-top: 30px; margin-bottom: 15px;">6. Healthcare & Long-Term Care</h3>
+                
+                <p>Healthcare facilities experience additional benefits beyond office environments:</p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Reduced medication errors (nursing staff alertness)</li>
+                    <li>Improved patient sleep quality and recovery times</li>
+                    <li>Lower staff burnout and turnover</li>
+                    <li>Enhanced resident well-being in LTC facilities</li>
+                </ul>
+
+                <p><strong>Estimated Impact:</strong> $400-$800 per bed annually in reduced errors, faster discharge, and staff retention</p>
+
+                <h3 style="color: #1E293B; margin-top: 30px; margin-bottom: 15px;">7. Stakeholder Chain and Value Leakage</h3>
+                
+                <p>Value is lost at multiple decision points:</p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li><strong>Client/Owner:</strong> Often unaware of ROI; focuses on capital budget only</li>
+                    <li><strong>Design Team:</strong> May specify circadian features but lack tools to defend at VE</li>
+                    <li><strong>Contractor:</strong> Incentivized on first cost; labels advanced systems as "extras"</li>
+                    <li><strong>End User:</strong> Never sees the choice that was made on their behalf</li>
+                </ul>
+
+                <h3 style="color: #1E293B; margin-top: 30px; margin-bottom: 15px;">8. Impact on Specification Professionals</h3>
+                
+                <p><strong>Annual Financial Impact (Conservative Case):</strong></p>
+                <div style="background: #F7F3EE; padding: 20px; border-radius: 6px; margin: 20px 0;">
+                    <p><strong>Loss #1: Unpaid VE Rework Time</strong></p>
+                    <div style="margin-left: 20px; margin-top: 10px;">
+                        Annual compensation: $160,000<br>
+                        Hourly rate: $83/hour<br>
+                        VE rework time: 90 hours/year<br>
+                        <strong style="color: #F59E0B;">Time loss: $7,500/year</strong>
+                    </div>
+
+                    <p style="margin-top: 20px;"><strong>Loss #2: Commission from Downgraded Scope</strong></p>
+                    <div style="margin-left: 20px; margin-top: 10px;">
+                        15 projects × $300K average × 10% VE reduction × 5% commission<br>
+                        <strong style="color: #F59E0B;">Commission loss: $22,500/year</strong>
+                    </div>
+
+                    <p style="margin-top: 20px; font-size: 1.2rem;"><strong style="color: #F59E0B;">Total Annual Impact: ~$30,000 USD</strong></p>
+                    <p style="margin-top: 10px;">This represents 19% of variable income and is entirely preventable with proper value documentation.</p>
+                </div>
+
+                <h3 style="color: #1E293B; margin-top: 30px; margin-bottom: 15px;">9. Sensitivity Analysis</h3>
+                
+                <p><strong>Low/Medium/High Scenarios:</strong></p>
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <tr style="background: #F7F3EE;">
+                        <th style="padding: 10px; text-align: left; border: 1px solid #E7E2DA;">Scenario</th>
+                        <th style="padding: 10px; text-align: left; border: 1px solid #E7E2DA;">Productivity Uplift</th>
+                        <th style="padding: 10px; text-align: left; border: 1px solid #E7E2DA;">Annual Value (20K sq ft office)</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #E7E2DA;">Conservative</td>
+                        <td style="padding: 10px; border: 1px solid #E7E2DA;">5%</td>
+                        <td style="padding: 10px; border: 1px solid #E7E2DA;">$487,500</td>
+                    </tr>
+                    <tr style="background: #F7F3EE;">
+                        <td style="padding: 10px; border: 1px solid #E7E2DA;">Base Case</td>
+                        <td style="padding: 10px; border: 1px solid #E7E2DA;">10%</td>
+                        <td style="padding: 10px; border: 1px solid #E7E2DA;">$975,000</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #E7E2DA;">Optimistic</td>
+                        <td style="padding: 10px; border: 1px solid #E7E2DA;">15%</td>
+                        <td style="padding: 10px; border: 1px solid #E7E2DA;">$1,462,500</td>
+                    </tr>
+                </table>
+
+                <h3 style="color: #1E293B; margin-top: 30px; margin-bottom: 15px;">10. Recommendations</h3>
+                
+                <p><strong>For Owners & Developers:</strong></p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Include performance-based lighting requirements in RFPs</li>
+                    <li>Request ROI documentation early in design phase</li>
+                    <li>Protect circadian systems during value engineering</li>
+                    <li>Consider 10-year TCO, not just capital cost</li>
+                </ul>
+
+                <p><strong>For Design Teams:</strong></p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Specify WELL-aligned circadian metrics explicitly</li>
+                    <li>Pre-load health and productivity data into specs</li>
+                    <li>Document ROI before first VE meeting</li>
+                    <li>Use owner's business language (ROI, payback, NPV)</li>
+                </ul>
+
+                <p><strong>For Contractors:</strong></p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Frame circadian systems as human capital investment</li>
+                    <li>Present lifecycle cost, not just upfront delta</li>
+                    <li>Educate clients on long-term value capture</li>
+                </ul>
+
+                <h3 style="color: #1E293B; margin-top: 30px; margin-bottom: 15px;">11. Conclusions</h3>
+                
+                <p>The Greater Florida Area is systematically underinvesting in circadian-supportive lighting, resulting in:</p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Hundreds of millions in lost productivity annually</li>
+                    <li>Degraded health outcomes for building occupants</li>
+                    <li>Reduced asset values for building owners</li>
+                    <li>Erosion of income and influence for specification professionals</li>
+                </ul>
+
+                <p>This is not due to lack of available technology or expertise—it's a communication and value-documentation gap. When ROI is quantified early and presented in stakeholder-appropriate language, circadian lighting systems are protected through procurement and deliver measurable returns within 2-4 years.</p>
+
+                <div style="background: #FFF3E0; padding: 20px; border-left: 4px solid #F59E0B; margin: 30px 0;">
+                    <p style="font-weight: 600; color: #1E293B;">For specification professionals and market leaders in Florida:</p>
+                    <p style="margin-top: 10px;">This report provides the framework to shift conversations from "lighting as cost" to "lighting as strategic investment in human performance." Use it in owner meetings, IES presentations, and as leave-behind documentation to defend value before it reaches the tender phase.</p>
+                </div>
+
+                <h3 style="color: #1E293B; margin-top: 30px; margin-bottom: 15px;">12. References & Data Sources</h3>
+                <ul style="margin-left: 20px; font-size: 0.9rem; color: #6B7280;">
+                    <li>WELL Building Standard v2 (International WELL Building Institute)</li>
+                    <li>IES Florida Section professional surveys (2025-2026)</li>
+                    <li>ULI Tenant Preferences Report (productivity impacts)</li>
+                    <li>Harvard T.H. Chan School of Public Health (COGfx studies)</li>
+                    <li>Florida Commercial Real Estate Board market data</li>
+                    <li>Statistics USA wage and employment data (GTA)</li>
+                </ul>
+
+                <p style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #E7E2DA; font-size: 0.9rem; color: #6B7280; text-align: center;">
+                    Report prepared February 2026. Analysis anonymized to protect participant confidentiality.<br>
+                    All financial assumptions use conservative mid-range values.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ROI Calculator
+        function calculateROI() {
+            const compensation = parseFloat(document.getElementById('compensation').value) || 0;
+            const projects = parseFloat(document.getElementById('projects').value) || 0;
+            const avgProject = parseFloat(document.getElementById('avgProject').value) || 0;
+            const veReduction = parseFloat(document.getElementById('veReduction').value) || 0;
+            const commission = parseFloat(document.getElementById('commission').value) || 0;
+
+            // Time loss calculation
+            const hourlyRate = compensation / 1920;
+            const veCycles = projects * 2;
+            const hoursPerCycle = 3;
+            const totalHours = veCycles * hoursPerCycle;
+            const timeLoss = totalHours * hourlyRate;
+
+            // Commission loss calculation
+            const scopeLossPerProject = avgProject * (veReduction / 100);
+            const commissionLossPerProject = scopeLossPerProject * (commission / 100);
+            const totalCommissionLoss = commissionLossPerProject * projects;
+
+            // Total loss
+            const totalLoss = timeLoss + totalCommissionLoss;
+            const recovered = totalLoss * 0.5;
+
+            // Update UI
+            document.getElementById('timeLoss').textContent = '$' + Math.round(timeLoss).toLocaleString();
+            document.getElementById('commissionLoss').textContent = '$' + Math.round(totalCommissionLoss).toLocaleString();
+            document.getElementById('totalLoss').textContent = '$' + Math.round(totalLoss).toLocaleString();
+            document.getElementById('recovered').textContent = '$' + Math.round(recovered).toLocaleString() + '/year';
+        }
+
+        // Add event listeners
+        document.getElementById('compensation').addEventListener('input', calculateROI);
+        document.getElementById('projects').addEventListener('input', calculateROI);
+        document.getElementById('avgProject').addEventListener('input', calculateROI);
+        document.getElementById('veReduction').addEventListener('input', calculateROI);
+        document.getElementById('commission').addEventListener('input', calculateROI);
+
+        // Initial calculation
+        calculateROI();
+    </script>
+</body>
+</html>
